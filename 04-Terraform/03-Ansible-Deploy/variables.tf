@@ -1,15 +1,15 @@
 variable "key_name" {
-  default = "aws_301"
+  default = "terraform"
 }
 
 variable "pvt_key" {
-  default = "/root/.ssh/awskey.pem"
+  default = "/root/.ssh/mansoor.pem"
 }
 
 variable "us-east-zones" {
-  default = ["us-east-2b"]
+  default = ["us-east-2a"]
 }
 
 variable "sg-id" {
-  default = "sg-0ef072f0fd73317b6"
+  default = "sg-01a88be3708d1fd0e"
 }

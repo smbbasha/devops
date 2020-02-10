@@ -27,23 +27,21 @@ node {
    sh label: '', script: 'mvn package'
   }
   
-   stage('Sonar Analysis'){
-        withSonarQubeEnv('SonarQube'){
+   stage('SonarQube Analysis'){
+        withSonarQubeEnv('SonarQube server'){
          sh 'mvn sonar:sonar'
         }
         }
 	
-	stage('Jfrog Artifacory Upload') {
- 	def server= Artifactory.server 'Artifactory'
- 	def uploadSpec= """{
- 	"files": [{
- 	"pattern": "/var/lib/jenkins/workspace/Aws_Demo/01-Jenkins/Code/petclinic/target/petclinic.war",
- 	"target": "petclinic"}]
- 	}"""
- 	server.upload(uploadSpec)
- 	 
- 	}
-
+   stage('Jfrog Artifacory Upload') {
+	def server= Artifactory.server 'jfrog'
+	def uploadSpec= """{
+	"files": [{
+	"pattern": "/target/*.war",
+	"target": "Devops301"}]
+	}"""
+	server.upload(uploadSpec)
+	}
 
    stage('Archive-Artifacts') {
    archiveArtifacts 'target/*.war'
