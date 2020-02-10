@@ -26,12 +26,11 @@ node {
    stage('Maven-Package') {
    sh label: '', script: 'mvn package'
   }
-  
    stage('SonarQube Analysis'){
-        withSonarQubeEnv('SonarQube server'){
-         sh 'mvn sonar:sonar'
-        }
-        }
+     withSonarQubeEnv('SonarQube server'){
+       sh 'mvn sonar:sonar'
+     }
+   }
 	
    stage('Jfrog Artifacory Upload') {
 	def server= Artifactory.server 'jfrog'
@@ -71,9 +70,6 @@ notify('Job Completed')
   currentBuild.result = 'FAILURE'
 }
 }
-
-
-
 def notify(status){
     emailext (
 	to: "amitvashist7@gmail.com",
