@@ -1,5 +1,5 @@
 variable "key_name" {
-  default = "terraform"
+  default = "mansoor"
 }
 
 variable "pvt_key" {
