@@ -36,9 +36,9 @@ node {
 	def uploadSpec= """{
 	"files": [{
 	"pattern": "/target/*.war",
-	"target": "Devops301"}]
+	"target": "Devops301/"}]
 	}"""
-	server.upload(uploadSpec)
+        server.upload(uploadSpec)
 	}
    stage('Docker-Stage-Deployment') {
    sh label: '', script: 'docker-compose up -d --build'
