@@ -40,9 +40,6 @@ node {
 	}"""
 	server.upload(uploadSpec)
 	}
-   stage('Archive-Artifacts') {
-   archiveArtifacts 'target/*.war'
-  }
    stage('Docker-Stage-Deployment') {
    sh label: '', script: 'docker-compose up -d --build'
   }
