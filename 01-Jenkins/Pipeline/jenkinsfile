@@ -4,7 +4,7 @@ node {
 
      
   stage('Git-Checkout') {
-   git 'https://github.com/smbbasha/devops.git'
+   git branch: 'master_dev', url: 'https://github.com/smbbasha/devops'
   }
     
  def project_path="01-Jenkins/Code/petclinic"
